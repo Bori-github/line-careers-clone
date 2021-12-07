@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500;700&display=swap");
+
+body {
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 90px;
+  padding: 0 30px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+}
+
+.header-col {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.header-col .logo {
+  margin-right: 50px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.header-col .list-menu {
+  display: flex;
+}
+
+.header-col .list-menu li {
+  margin-right: 50px;
+}
+
+.header-col .btn-lang {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 700;
+}
+.header-col .btn-lang .material-icons-outlined {
+  margin-right: 5px;
+}
+
+.header-col .btn-search {
+  padding: 5px;
+}
+
+.header-col .btn-search::before {
+  display: inline-block;
+  content: "";
+  width: 2px;
+  height: 20px;
+  margin: 0 5px;
+  background: #999;
+}
+
+.header-col .list-lang {
+  /* display: none; */
+  position: absolute;
+  top: 30px;
+  padding: 5px 0;
+
+  border: 1px solid #fff;
+}
+.header-col .list-lang li a {
+  display: block;
+  padding: 10px 25px;
+  font-size: 14px;
+}
+
+.careers {
+  height: 929px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+}
