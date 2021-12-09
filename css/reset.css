@@ -145,3 +145,10 @@ button {
   margin: -1px;
   overflow: hidden;
 }
+.multi-ellipsis {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  padding-bottom: 3px;
+}
