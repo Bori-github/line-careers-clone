@@ -145,10 +145,17 @@ button {
   margin: -1px;
   overflow: hidden;
 }
-.multi-ellipsis {
+.multi3-ellipsis {
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  padding-bottom: 3px;
+}
+.multi6-ellipsis {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;
   padding-bottom: 3px;
 }
