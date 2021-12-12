@@ -145,6 +145,12 @@ button {
   margin: -1px;
   overflow: hidden;
 }
+.sl-ellipsis {
+  overflow: hidden;
+  display: block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 .multi3-ellipsis {
   overflow: hidden;
   display: -webkit-box;
