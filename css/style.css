@@ -57,6 +57,7 @@ body {
   position: relative;
 }
 .header-col .list-lang {
+  display: none;
   position: absolute;
   top: 30px;
   right: 0;
@@ -320,6 +321,7 @@ main .liners {
   position: relative;
 }
 .cont-company .list-site {
+  display: none;
   position: absolute;
   right: 0;
   bottom: 50px;
@@ -341,10 +343,12 @@ main .liners {
   display: flex;
   align-items: center;
 }
+.list-sns > li {
+  margin-left: 20px;
+}
 .list-sns button[class^="sns"] {
   width: 25px;
   height: 25px;
-  margin-left: 20px;
   background-size: 100%;
 }
 .list-sns .sns-instagram {
@@ -358,4 +362,24 @@ main .liners {
 }
 .list-sns .sns-youtube {
   background: url("../images/sns/youtube.svg") no-repeat;
+}
+
+.list-sns .list-sns-more {
+  display: none;
+  position: absolute;
+  bottom: 45px;
+  left: 50%;
+  padding: 10px 0;
+  border: 1px solid rgba(225, 225, 225);
+  background-color: #fff;
+  color: #999;
+  transform: translateX(-50%);
+}
+.list-sns .list-sns-more a {
+  display: block;
+  width: 150px;
+  padding: 8px 15px;
+}
+.list-sns .list-sns-more a:hover {
+  color: #000;
 }
