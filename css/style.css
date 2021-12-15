@@ -18,7 +18,7 @@ body {
   z-index: 10;
   height: 88px;
   padding: 0 30px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(255, 255, 255, 0);
   color: #fff;
 }
 .header .header-col {
@@ -97,6 +97,14 @@ body {
 }
 .header-col .list-lang.show {
   display: block;
+}
+
+.header.scroll {
+  background-color: rgba(255, 255, 255, 1);
+  color: #000;
+}
+.header-col .logo.scroll {
+  background-image: url("../images/logo_b.png");
 }
 
 /* main */
