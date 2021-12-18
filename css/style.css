@@ -31,6 +31,8 @@ body {
   height: 30px;
   margin-right: 50px;
   background: url("../images/logo_w.png") no-repeat center center;
+  background-color: ;
+  background-image: ;
   background-size: 100%;
   transition: all 0.3s;
 }
@@ -89,6 +91,9 @@ body {
   display: block;
   padding: 8px 30px;
 }
+.header-col .list-lang a:hover {
+  color: #ccc;
+}
 .header-col .btn-search::before {
   content: "";
   display: inline-block;
@@ -97,7 +102,7 @@ body {
   margin-right: 16px;
   background-color: rgba(255, 255, 255, 0.2);
 }
-.header-col .list-lang.show {
+.header-col .list-lang.on {
   display: block;
 }
 
@@ -107,6 +112,17 @@ body {
 }
 .header-col .logo.scroll-down {
   background-image: url("../images/logo_b.png");
+}
+.header-col .list-menu.scroll-down li:hover::after {
+  background-color: #000;
+}
+.header-col .list-lang.scroll-down {
+  border-color: #333;
+  background-color: #fff;
+  color: #999;
+}
+.header-col .list-lang.scroll-down a:hover {
+  color: #000;
 }
 
 /* main */
@@ -171,13 +187,15 @@ main .careers {
 .cont-combo .btn-combo {
   display: flex;
   align-items: center;
+  width: 230px;
   padding: 15px 0;
   border-bottom: 1px solid #fff;
+  background: url("../images/expand_more_w.svg") no-repeat 90% 50%;
   font-size: 18px;
   font-weight: 700;
 }
-.cont-combo .btn-combo .material-icons-outlined {
-  padding: 0 20px 0 100px;
+.cont-combo .btn-combo.on {
+  background-image: url("../images/expand_less_w.svg");
 }
 .list-combo ul {
   display: none;
@@ -208,7 +226,7 @@ main .careers {
 .list-combo ul li a {
   display: block;
 }
-.list-combo ul.show {
+.list-combo ul.on {
   display: block;
 }
 .cont-combo .btn-next {
@@ -354,6 +372,12 @@ main .liners {
   opacity: 0;
   transition: all 0.2s;
 }
+.list-liners li:nth-of-type(2) .liner-hover {
+  background-image: url("../images/liners/liners2.jpg");
+}
+.list-liners li:nth-of-type(3) .liner-hover {
+  background-image: url("../images/liners/liners3.jpg");
+}
 .liner-hover .liner-title {
   position: absolute;
   top: 30px;
@@ -419,7 +443,7 @@ main .liners {
 .cont-company .list-site a:hover {
   color: #000;
 }
-.cont-company .list-site.show {
+.cont-company .list-site.on {
   display: block;
 }
 .cont-company .list-sns {
@@ -475,10 +499,11 @@ main .liners {
 .list-sns .list-sns-more a:hover {
   color: #000;
 }
-.list-sns .list-sns-more.show {
+.list-sns .list-sns-more.on {
   display: block;
 }
 
+/* btn-scroll-top */
 .btn-scroll-top {
   position: fixed;
   right: 50px;
