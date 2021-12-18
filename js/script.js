@@ -1,12 +1,13 @@
 const header = document.querySelector(".header");
 const logo = document.querySelector(".logo");
+const listMenu = document.querySelector(".list-menu");
 
 const btnLang = document.querySelector(".btn-lang");
 const listLang = document.querySelector(".list-lang");
 
 const btnCombo = document.querySelectorAll(".btn-combo");
 const listCombo = document.querySelectorAll(".list-combo ul");
-const comboOption = document.querySelectorAll(".combo-option");
+const comboOptions = document.querySelectorAll(".combo-option");
 const btnNext = document.querySelector(".btn-next");
 
 const btnSite = document.querySelector(".btn-site");
@@ -23,8 +24,8 @@ function showList() {
   const thisList = this.parentElement.querySelector("ul");
   const arrowIcon = this.querySelector("span:last-child");
 
-  if (!thisList.classList.contains("show")) {
-    parentList.forEach((e) => e.classList.remove("show"));
+  if (!thisList.classList.contains("on")) {
+    parentList.forEach((e) => e.classList.remove("on"));
   }
 
   if (arrowDown) {
@@ -35,51 +36,73 @@ function showList() {
     arrowDown = true;
   }
 
-  thisList.classList.toggle("show");
+  thisList.classList.toggle("on");
 }
 
-comboOption.forEach((el) => {
-  el.addEventListener("click", (item) => {
-    console.log(this);
-
-    let itemCombo = item.target;
-    itemCombo.classList.toggle("selected");
-    btnNext.classList.toggle("selected");
-  });
-});
-
-// Click btn event
-const hideLists = () => {
-  listSns.forEach((list) => {
-    list.classList.remove("show");
+const handleOption = (e) => {
+  const { target } = e;
+  const parent = target.parentNode;
+  const btnCombo = parent.parentNode.parentNode.querySelector("button");
+  const options = parent.querySelectorAll(".combo-option");
+  options.forEach((option) => {
+    if (option.classList.contains("selected")) {
+      option.classList.remove("selected");
+    } else {
+      option.classList.remove("selected");
+      option.classList.add("selected");
+      btnNext.classList.add("selected");
+      btnCombo.innerText = target.innerText;
+    }
   });
 };
 
-const handleList = (e) => {
+comboOptions.forEach((option) => {
+  option.addEventListener("click", handleOption);
+});
+
+const hideLists = () => {
+  listCombo.forEach((list) => {
+    list.classList.remove("on");
+  });
+  btnCombo.forEach((btn) => {
+    btn.classList.remove("on");
+  });
+};
+
+const handleCombo = (e) => {
   const { target } = e;
   const parent = target.parentNode;
-  if (parent.querySelector("ul[class^='list']").classList.contains("show")) {
+  if (parent.querySelector("ul[class^='list']").classList.contains("on")) {
     hideLists();
   } else {
     hideLists();
-    parent.querySelector("ul[class^='list']").classList.add("show");
+    parent.querySelector("ul[class^='list']").classList.add("on");
+    target.classList.add("on");
+  }
+};
+
+// Click btn event
+const handleList = (e) => {
+  const { target } = e;
+  const parent = target.parentNode;
+  if (!parent.querySelector("ul[class^='list']").classList.contains("on")) {
+    parent.querySelector("ul[class^='list']").classList.add("on");
   }
 };
 
 // Btns eventlisteners\
-btnLang.addEventListener("click", handleList);
+btnLang.addEventListener("click", showList);
 
-btnCombo.forEach((el) => {
-  el.addEventListener("click", handleList);
+btnCombo.forEach((btn) => {
+  btn.addEventListener("click", handleCombo);
 });
 
-btnSite.addEventListener("click", handleList);
+btnSite.addEventListener("click", showList);
 
 btnSns.forEach((btn) => {
   btn.addEventListener("click", handleList);
 });
 
-//
 btnScrollTop.addEventListener("click", (e) => {
   e.preventDefault();
   window.scrollTo({
@@ -89,15 +112,19 @@ btnScrollTop.addEventListener("click", (e) => {
 });
 
 // Window scroll event
-window.addEventListener("scroll", function () {
+window.addEventListener("scroll", () => {
   // scrollY 값이 헤더 높이보다 클 경우
   if (window.scrollY > 88) {
     // 헤더 스타일 변경
     header.classList.add("scroll-down");
     logo.classList.add("scroll-down");
+    listMenu.classList.add("scroll-down");
+    listLang.classList.add("scroll-down");
   } else {
     header.classList.remove("scroll-down");
     logo.classList.remove("scroll-down");
+    listMenu.classList.remove("scroll-down");
+    listLang.classList.remove("scroll-down");
   }
 });
 
