@@ -132,6 +132,9 @@ window.addEventListener("scroll", () => {
     logo.classList.remove("scroll-down");
     listMenu.classList.remove("scroll-down");
     listLang.classList.remove("scroll-down");
+    if (window.scrollY === 0) {
+      btnScrollTop.classList.remove("scroll-up");
+    }
   }
 });
 
