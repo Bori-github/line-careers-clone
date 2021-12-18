@@ -52,6 +52,7 @@ const handleOption = (e) => {
       option.classList.add("selected");
       btnNext.classList.add("selected");
       btnCombo.innerText = target.innerText;
+      hideLists();
     }
   });
 };
@@ -65,6 +66,9 @@ const hideLists = () => {
     list.classList.remove("on");
   });
   btnCombo.forEach((btn) => {
+    btn.classList.remove("on");
+  });
+  listSns.forEach((btn) => {
     btn.classList.remove("on");
   });
 };
@@ -85,7 +89,10 @@ const handleCombo = (e) => {
 const handleList = (e) => {
   const { target } = e;
   const parent = target.parentNode;
-  if (!parent.querySelector("ul[class^='list']").classList.contains("on")) {
+  if (parent.querySelector("ul[class^='list']").classList.contains("on")) {
+    hideLists();
+  } else {
+    hideLists();
     parent.querySelector("ul[class^='list']").classList.add("on");
   }
 };
@@ -134,7 +141,6 @@ function scrollUpEvent() {
     if (e.wheelDelta === 120) {
       // btnScrollTop 아래에서 위로 나타남
       btnScrollTop.classList.add("scroll-up");
-      //
       if (window.scrollY < 120) {
         btnScrollTop.classList.remove("scroll-up");
       }
