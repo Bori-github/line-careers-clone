@@ -18,6 +18,8 @@ const listSns = document.querySelectorAll(".list-sns-more");
 
 const btnScrollTop = document.querySelector(".btn-scroll-top");
 
+const listParts = document.querySelectorAll(".list-part");
+
 let arrowDown = true;
 function showList() {
   const parentList = this.parentElement.parentElement.querySelectorAll("ul");
@@ -70,6 +72,9 @@ const hideLists = () => {
   });
   listSns.forEach((btn) => {
     btn.classList.remove("on");
+  });
+  listParts.forEach((list) => {
+    list.classList.remove("on");
   });
 };
 
@@ -154,3 +159,8 @@ function scrollUpEvent() {
 }
 
 scrollUpEvent();
+
+// 은님 블로그
+// https://m.post.naver.com/viewer/postView.naver?volumeNo=12402837&memberNo=1378210
+
+// https://goddino.tistory.com/68
