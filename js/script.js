@@ -3,9 +3,13 @@ const logo = document.querySelector(".logo");
 const listMenu = document.querySelector(".list-menu");
 const btnLang = document.querySelector(".btn-lang");
 const listLang = document.querySelector(".list-lang");
-const btnSearch = document.querySelector(".btn-search");
+const btnSearch = document.querySelector(".header .btn-search");
 
 const headerItems = [header, logo, listMenu, btnLang, listLang, btnSearch];
+
+const headerSearch = document.querySelector(".header-search");
+const btnCloseSearch = document.querySelector(".btn-close-search");
+const dimmedSearch = document.querySelector(".dimmed-search");
 
 const btnCombo = document.querySelectorAll(".btn-combo");
 const listCombo = document.querySelectorAll(".list-combo ul");
@@ -22,6 +26,16 @@ const btnScrollTop = document.querySelector(".btn-scroll-top");
 
 const listParts = document.querySelectorAll(".list-part");
 
+const showSearchHeader = () => {
+  headerSearch.classList.add("on");
+  dimmedSearch.classList.add("on");
+};
+
+const hideSearchHeader = () => {
+  headerSearch.classList.remove("on");
+  dimmedSearch.classList.remove("on");
+};
+
 const hideLists = () => {
   listCombo.forEach((list) => {
     list.classList.remove("on");
@@ -29,8 +43,8 @@ const hideLists = () => {
   btnCombo.forEach((btn) => {
     btn.classList.remove("on");
   });
-  listSns.forEach((btn) => {
-    btn.classList.remove("on");
+  listSns.forEach((list) => {
+    list.classList.remove("on");
   });
   listParts.forEach((list) => {
     list.classList.remove("on");
@@ -79,7 +93,11 @@ const handleCombo = (e) => {
     target.classList.add("on");
   }
 };
-// Btns eventlisteners\
+
+// Btns eventlisteners
+btnSearch.addEventListener("click", showSearchHeader);
+btnCloseSearch.addEventListener("click", hideSearchHeader);
+
 btnLang.addEventListener("click", handleList);
 btnSite.addEventListener("click", handleList);
 
