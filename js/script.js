@@ -1,9 +1,11 @@
 const header = document.querySelector(".header");
 const logo = document.querySelector(".logo");
 const listMenu = document.querySelector(".list-menu");
-
 const btnLang = document.querySelector(".btn-lang");
 const listLang = document.querySelector(".list-lang");
+const btnSearch = document.querySelector(".btn-search");
+
+const headerItems = [header, logo, listMenu, btnLang, listLang, btnSearch];
 
 const btnCombo = document.querySelectorAll(".btn-combo");
 const listCombo = document.querySelectorAll(".list-combo ul");
@@ -20,26 +22,33 @@ const btnScrollTop = document.querySelector(".btn-scroll-top");
 
 const listParts = document.querySelectorAll(".list-part");
 
-let arrowDown = true;
-function showList() {
-  const parentList = this.parentElement.parentElement.querySelectorAll("ul");
-  const thisList = this.parentElement.querySelector("ul");
-  const arrowIcon = this.querySelector("span:last-child");
+const hideLists = () => {
+  listCombo.forEach((list) => {
+    list.classList.remove("on");
+  });
+  btnCombo.forEach((btn) => {
+    btn.classList.remove("on");
+  });
+  listSns.forEach((btn) => {
+    btn.classList.remove("on");
+  });
+  listParts.forEach((list) => {
+    list.classList.remove("on");
+  });
+};
 
-  if (!thisList.classList.contains("on")) {
-    parentList.forEach((e) => e.classList.remove("on"));
-  }
-
-  if (arrowDown) {
-    arrowIcon.innerText = "keyboard_arrow_up";
-    arrowDown = false;
+const handleList = (e) => {
+  const { target } = e;
+  const parent = target.parentNode;
+  if (parent.querySelector("ul[class^='list']").classList.contains("on")) {
+    hideLists();
+    target.classList.remove("on");
   } else {
-    arrowIcon.innerText = "keyboard_arrow_down";
-    arrowDown = true;
+    hideLists();
+    target.classList.add("on");
+    parent.querySelector("ul[class^='list']").classList.add("on");
   }
-
-  thisList.classList.toggle("on");
-}
+};
 
 const handleOption = (e) => {
   const { target } = e;
@@ -59,25 +68,6 @@ const handleOption = (e) => {
   });
 };
 
-comboOptions.forEach((option) => {
-  option.addEventListener("click", handleOption);
-});
-
-const hideLists = () => {
-  listCombo.forEach((list) => {
-    list.classList.remove("on");
-  });
-  btnCombo.forEach((btn) => {
-    btn.classList.remove("on");
-  });
-  listSns.forEach((btn) => {
-    btn.classList.remove("on");
-  });
-  listParts.forEach((list) => {
-    list.classList.remove("on");
-  });
-};
-
 const handleCombo = (e) => {
   const { target } = e;
   const parent = target.parentNode;
@@ -89,28 +79,16 @@ const handleCombo = (e) => {
     target.classList.add("on");
   }
 };
-
-// Click btn event
-const handleList = (e) => {
-  const { target } = e;
-  const parent = target.parentNode;
-  if (parent.querySelector("ul[class^='list']").classList.contains("on")) {
-    hideLists();
-  } else {
-    hideLists();
-    parent.querySelector("ul[class^='list']").classList.add("on");
-  }
-};
-
 // Btns eventlisteners\
-btnLang.addEventListener("click", showList);
+btnLang.addEventListener("click", handleList);
+btnSite.addEventListener("click", handleList);
 
 btnCombo.forEach((btn) => {
   btn.addEventListener("click", handleCombo);
 });
-
-btnSite.addEventListener("click", showList);
-
+comboOptions.forEach((option) => {
+  option.addEventListener("click", handleOption);
+});
 btnSns.forEach((btn) => {
   btn.addEventListener("click", handleList);
 });
@@ -127,16 +105,13 @@ btnScrollTop.addEventListener("click", (e) => {
 window.addEventListener("scroll", () => {
   // scrollY 값이 헤더 높이보다 클 경우
   if (window.scrollY > 88) {
-    // 헤더 스타일 변경
-    header.classList.add("scroll-down");
-    logo.classList.add("scroll-down");
-    listMenu.classList.add("scroll-down");
-    listLang.classList.add("scroll-down");
+    headerItems.forEach((item) => {
+      item.classList.add("scroll-down");
+    });
   } else {
-    header.classList.remove("scroll-down");
-    logo.classList.remove("scroll-down");
-    listMenu.classList.remove("scroll-down");
-    listLang.classList.remove("scroll-down");
+    headerItems.forEach((item) => {
+      item.classList.remove("scroll-down");
+    });
     if (window.scrollY === 0) {
       btnScrollTop.classList.remove("scroll-up");
     }
