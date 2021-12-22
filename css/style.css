@@ -323,6 +323,7 @@ main .careers {
   font-size: 11px;
   text-align: center;
   transform: translateX(-50%);
+  opacity: 0.5;
 }
 
 /* section.explore */
